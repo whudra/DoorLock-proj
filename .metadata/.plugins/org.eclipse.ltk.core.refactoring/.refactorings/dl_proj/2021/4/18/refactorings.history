@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;dl_proj/src/main/webapp/AndroidConnect.jsp&apos; to &apos;AtoW_Serial.jsp&apos;" description="Rename resource &apos;AndroidConnect.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/AndroidConnect.jsp" name="AtoW_Serial.jsp" stamp="1619580935487" updateReferences="true"/>
+</session>
