@@ -37,4 +37,11 @@ public class UserDTO {
 	public void setD_pw(String d_pw) {
 		this.d_pw = d_pw;
 	}
+	public void set_All(String serialNumber, String ip, String port, String a_pw, String d_pw) {
+		this.serialNumber = serialNumber;
+		this.ip = ip;
+		this.port = port;
+		this.a_pw = a_pw;
+		this.d_pw = d_pw;
+	}
 }

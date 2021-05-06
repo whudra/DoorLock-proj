@@ -67,11 +67,11 @@ public class UserDAO {
 	}
 	
 	public String add_User(UserDTO dto) {
-		String res = null;
+		String res;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-			sql = "INSERT INTO userinfo VALUES(?,?,?,?,?)";// 조회
+			sql = "INSERT INTO userinfo VALUES('?','?','?','?','?')";// 조회
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getSerialNumber());
 			pstmt.setString(2, dto.getIp());

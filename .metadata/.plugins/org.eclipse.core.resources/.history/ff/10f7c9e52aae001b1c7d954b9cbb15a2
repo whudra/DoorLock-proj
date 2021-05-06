@@ -67,22 +67,20 @@ public class UserDAO {
 	}
 	
 	public String add_User(UserDTO dto) {
-		String res = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-			sql = "INSERT INTO userinfo VALUES(?,?,?,?,?)";// 조회
+			sql = "INSERT INTO userinfo VALUES('?','?','?','?','?')";// 조회
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getSerialNumber());
 			pstmt.setString(2, dto.getIp());
 			pstmt.setString(3, dto.getPort());
 			pstmt.setString(4, dto.getA_pw());
 			pstmt.setString(5, dto.getD_pw());
+			rs = pstmt.executeQuery();
 			
-			int returns = pstmt.executeUpdate();
-			
-			if (returns != 0) res = "성공!";
-			else res = "실패!";
+			if (rs.next()) returns = "비밀번호 인증 성공!";
+			else returns = "비밀번호 인증 실패!";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,6 +89,6 @@ public class UserDAO {
 			if (conn != null)try {conn.close();	} catch (SQLException ex) {	}
 		}
 		
-		return res;
+		return null;
 	}
 }

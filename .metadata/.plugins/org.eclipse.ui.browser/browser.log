@@ -1,0 +1,6 @@
+
+5월 04, 2021 11:17:04.79 NEW SESSION
+5월 04, 2021 11:17:04.79 [10908:10776:0504/111704.077:ERROR:device_event_log_impl.cc(214)] [11:17:04.076] Bluetooth: bluetooth_adapter_winrt.cc:1072 Getting Default Adapter failed.
+5월 04, 2021 11:24:06.610 [10908:10776:0504/112406.608:ERROR:device_event_log_impl.cc(214)] [11:24:06.608] Bluetooth: bluetooth_adapter_winrt.cc:1072 Getting Default Adapter failed.
+5월 06, 2021 11:22:38.169 [10908:10816:0506/112238.166:ERROR:mcs_client.cc(755)] Received close command, resetting connection.
+5월 06, 2021 14:36:57.222 [10908:10776:0506/143657.222:ERROR:device_event_log_impl.cc(214)] [14:36:57.222] USB: usb_service_win.cc:352 Could not get child device's service name: 요소가 없습니다. (0x490)
