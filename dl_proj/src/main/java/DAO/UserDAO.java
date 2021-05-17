@@ -93,4 +93,49 @@ public class UserDAO {
 		
 		return res;
 	}
+	
+	public UserDTO getUserinfoPW(UserDTO dto) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			sql = "select * from userinfo where a_pw = ?";// 조회
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getA_pw());
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				dto.setIp(rs.getString("IP"));
+				dto.setPort(rs.getString("Port"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null)try {pstmt.close();} catch (SQLException ex) {}
+			if (conn != null)try {conn.close();	} catch (SQLException ex) {	}
+		}
+		return dto;
+	}
+	public UserDTO getUserinfoSerial(UserDTO dto) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			sql = "select * from userinfo where Serial_Number = ?";// 조회
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getSerialNumber());
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				dto.setIp(rs.getString("IP"));
+				dto.setPort(rs.getString("Port"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null)try {pstmt.close();} catch (SQLException ex) {}
+			if (conn != null)try {conn.close();	} catch (SQLException ex) {	}
+		}
+		return dto;
+	}
 }

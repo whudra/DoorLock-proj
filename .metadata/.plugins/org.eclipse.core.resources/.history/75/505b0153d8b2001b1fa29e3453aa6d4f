@@ -1,0 +1,21 @@
+package DTO;
+
+import java.util.Date;
+
+public class LogDTO {
+	private String serial_number;
+	private Date date;
+	
+	public String getSerial_number() {
+		return serial_number;
+	}
+	public void setSerial_number(String serial_number) {
+		this.serial_number = serial_number;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+}
