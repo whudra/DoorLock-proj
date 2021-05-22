@@ -1,0 +1,14 @@
+<%@page import="DAO.LogDAO"%>
+<%@page import="DTO.LogDTO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<% 
+	String serial_number = request.getParameter("serial_number");
+	String date = request.getParameter("date");
+	String state = request.getParameter("state");
+	LogDTO dto = new LogDTO();
+	dto.set_All(serial_number, date, state);
+	
+	String res = LogDAO.getInstance().Loginfo(dto);
+	out.print(res);
+%>

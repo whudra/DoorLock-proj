@@ -1,0 +1,33 @@
+<%@page import="DAO.LogDAO"%>
+<%@page import="DTO.LogDTO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<% 
+	String sn = request.getParameter("sn");
+	String ip = request.getParameter("ip");
+	String port = request.getParameter("port");
+	String a_pw = request.getParameter("a_pw");
+	String d_pw = request.getParameter("d_pw");
+	LogDTO dto = new LogDTO();
+	dto.set_All(sn, ip, port, a_pw, d_pw);
+	
+	String res = LogDAO.getInstance().getLoginfo(dto);
+	out.print(res);
+%>
+
+<%@page import="DTO.LogDTO"%>
+<%@page import="DAO.LogDAO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%
+	String serial =  request.getParameter("Serial");
+	String door_state = request.getParameter("Door");
+	
+	LogDAO dao = new LogDAO();
+	LogDTO dto = new LogDTO();
+	
+	dto.setSerial_number(serial);
+	dto.setState(door_state);
+	
+	dao.getInstance().updateLog(dto);
+%>

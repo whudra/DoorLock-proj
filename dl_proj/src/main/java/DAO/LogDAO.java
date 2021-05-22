@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import DTO.LogDTO;
 import DTO.UserDTO;
@@ -43,4 +44,31 @@ public class LogDAO {
 			if (conn != null)try {conn.close();	} catch (SQLException ex) {	}
 		}
 	}
+	
+	public ArrayList<LogDTO> Loginfo() {
+		ArrayList<LogDTO> list = new ArrayList<>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			sql = "select * from log";// Á¶È¸
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				LogDTO dtos = new LogDTO();
+				dtos.setSerial_number(rs.getString("Serial_Number"));
+				dtos.setDate(rs.getString("date"));
+				dtos.setState(rs.getString("state"));
+				list.add(dtos);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null)try {pstmt.close();} catch (SQLException ex) {}
+			if (conn != null)try {conn.close();	} catch (SQLException ex) {	}
+		}
+		return list;
+	}
+	
 }

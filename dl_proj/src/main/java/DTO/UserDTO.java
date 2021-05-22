@@ -6,6 +6,7 @@ public class UserDTO {
 	private String port;
 	private String a_pw;
 	private String d_pw;
+	private String admin;
 	
 	public String getSerialNumber() {
 		return serialNumber;
@@ -36,6 +37,12 @@ public class UserDTO {
 	}
 	public void setD_pw(String d_pw) {
 		this.d_pw = d_pw;
+	}
+	public String getAdmin() {
+		return admin;
+	}
+	public void setAdmin(String admin) {
+		this.admin = admin;
 	}
 	public void set_All(String serialNumber, String ip, String port, String a_pw, String d_pw) {
 		this.serialNumber = serialNumber;

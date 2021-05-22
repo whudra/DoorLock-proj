@@ -81,11 +81,12 @@ public class UserDAO {
 			
 			int returns = pstmt.executeUpdate();
 			
-			if (returns != 0) res = "성공!";
+			if (returns != 0) res = "추가성공!";
 			else res = "실패!";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		} finally {
 			if (pstmt != null)try {pstmt.close();} catch (SQLException ex) {}
 			if (conn != null)try {conn.close();	} catch (SQLException ex) {	}
@@ -93,6 +94,32 @@ public class UserDAO {
 		
 		return res;
 	}
+	
+	public String del_User(UserDTO dto) {
+		String res = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			sql = "DELETE FROM userinfo WHERE Serial_Number = ?";// 조회
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getSerialNumber());
+			
+			int returns = pstmt.executeUpdate();
+			
+			if (returns != 0) res = "삭제성공!";
+			else res = "실패!";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			if (pstmt != null)try {pstmt.close();} catch (SQLException ex) {}
+			if (conn != null)try {conn.close();	} catch (SQLException ex) {	}
+		}
+		
+		return res;
+	}
+
 	
 	public UserDTO getUserinfoPW(UserDTO dto) {
 		try {
@@ -137,5 +164,28 @@ public class UserDAO {
 			if (conn != null)try {conn.close();	} catch (SQLException ex) {	}
 		}
 		return dto;
+	}
+	
+	public String getAdminState(UserDTO dto) {
+		String res = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			sql = "select * from userinfo where Serial_Number = ?";// 조회
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getSerialNumber());
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				res = rs.getString("ADMIN");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null)try {pstmt.close();} catch (SQLException ex) {}
+			if (conn != null)try {conn.close();	} catch (SQLException ex) {	}
+		}
+		return res;
 	}
 }
