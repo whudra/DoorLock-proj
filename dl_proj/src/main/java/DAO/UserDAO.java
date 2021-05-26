@@ -71,14 +71,14 @@ public class UserDAO {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-			sql = "INSERT INTO userinfo VALUES(?,?,?,?,?)";// 조회
+			sql = "INSERT INTO userinfo VALUES(?,?,?,?,?,?)";// 조회
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getSerialNumber());
 			pstmt.setString(2, dto.getIp());
 			pstmt.setString(3, dto.getPort());
 			pstmt.setString(4, dto.getA_pw());
 			pstmt.setString(5, dto.getD_pw());
-			
+			pstmt.setString(6, dto.getAdmin());		
 			int returns = pstmt.executeUpdate();
 			
 			if (returns != 0) res = "추가성공!";

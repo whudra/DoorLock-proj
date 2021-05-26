@@ -31,11 +31,13 @@ public class LogDAO {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-			sql = "INSERT INTO log VALUES(?,?,?)";// 조회
+			sql = "INSERT INTO log VALUES(?,?,?,?,?)";// 조회
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getSerial_number());
 			pstmt.setString(2, dto.getDate());
 			pstmt.setString(3, dto.getState());
+			pstmt.setString(4,  dto.getImagelog());
+			pstmt.setInt(5,  dto.getId());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,7 +52,7 @@ public class LogDAO {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-			sql = "select * from log";// 조회
+			sql = "select * from log ORDER BY date DESC";// 조회
 			pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			
@@ -70,5 +72,6 @@ public class LogDAO {
 		}
 		return list;
 	}
+	
 	
 }

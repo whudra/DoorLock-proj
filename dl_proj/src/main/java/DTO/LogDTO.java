@@ -7,13 +7,32 @@ public class LogDTO {
 	private String serial_number;
 	private String date;
 	private String state;
+	private String imagelog;
+	private int id;
 	
 	public LogDTO() {
 		Timestamp time = new Timestamp(System.currentTimeMillis());
 		SimpleDateFormat date_format = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
 		this.date = date_format.format(time);
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	
+	
+	public String getImagelog() {
+		return imagelog;
+	}
+
+	public void setImagelog(String imagelog) {
+		this.imagelog = imagelog;
+	}
+
 	public String getSerial_number() {
 		return serial_number;
 	}
