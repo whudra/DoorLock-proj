@@ -17,7 +17,7 @@ public class LogDAO {
 	ResultSet rs = null;
 	String sql = "";
 	String returns = "a";
-	String dbURL = "jdbc:mysql://192.168.86.252:9001/mydb";
+	String dbURL = "jdbc:mysql://192.168.0.4:3306/mydb";
 	String dbID = "root";
 	String dbPassword = "1234";
 	

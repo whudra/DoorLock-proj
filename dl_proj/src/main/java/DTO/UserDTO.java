@@ -7,6 +7,7 @@ public class UserDTO {
 	private String a_pw;
 	private String d_pw;
 	private String admin;
+	private String name;
 	
 	public String getSerialNumber() {
 		return serialNumber;
@@ -44,11 +45,21 @@ public class UserDTO {
 	public void setAdmin(String admin) {
 		this.admin = admin;
 	}
-	public void set_All(String serialNumber, String ip, String port, String a_pw, String d_pw) {
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void set_All(String serialNumber, String ip, String port, String a_pw, String d_pw, String name) {
 		this.serialNumber = serialNumber;
 		this.ip = ip;
 		this.port = port;
 		this.a_pw = a_pw;
 		this.d_pw = d_pw;
+		this.name = name;
 	}
 }

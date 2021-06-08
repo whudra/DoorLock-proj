@@ -14,7 +14,7 @@ public class UserDAO {
 	ResultSet rs = null;
 	String sql = "";
 	String returns = "a";
-	String dbURL = "jdbc:mysql://192.168.86.252:9001/mydb";
+	String dbURL = "jdbc:mysql://192.168.0.4:3306/mydb";
 	String dbID = "root";
 	String dbPassword = "1234";
 	
@@ -35,6 +35,27 @@ public class UserDAO {
 			
 			if (rs.next()) returns = "시리얼 인증 성공!";
 			else returns = "시리얼 인증 실패!";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null)try {pstmt.close();} catch (SQLException ex) {}
+			if (conn != null)try {conn.close();	} catch (SQLException ex) {	}
+		}
+		return returns;
+	}
+	
+	public String pass_Seiral(UserDTO dto) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			sql = "select * from userinfo where Serial_Number = ?";// 조회
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getSerialNumber());
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) returns = "시리얼패스 인증 성공!";
+			else returns = "시리얼패스 인증 실패!";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,7 +92,7 @@ public class UserDAO {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-			sql = "INSERT INTO userinfo VALUES(?,?,?,?,?,?)";// 조회
+			sql = "INSERT INTO userinfo VALUES(?,?,?,?,?,?,?)";// 조회
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getSerialNumber());
 			pstmt.setString(2, dto.getIp());
@@ -79,6 +100,7 @@ public class UserDAO {
 			pstmt.setString(4, dto.getA_pw());
 			pstmt.setString(5, dto.getD_pw());
 			pstmt.setString(6, dto.getAdmin());		
+			pstmt.setString(7,  dto.getName());
 			int returns = pstmt.executeUpdate();
 			
 			if (returns != 0) res = "추가성공!";

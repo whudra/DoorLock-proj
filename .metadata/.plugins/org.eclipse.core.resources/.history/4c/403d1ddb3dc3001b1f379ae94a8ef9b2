@@ -1,0 +1,12 @@
+<%@page import="DAO.UserDAO"%>
+<%@page import="DTO.UserDTO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<% 
+	String serialpass = request.getParameter("Serialpass");
+	UserDTO dto = new UserDTO();
+	dto.setSerialNumber(serialpass);
+	
+	String res = UserDAO.getInstance().check_Serial(dto);
+	out.print(res);
+%>

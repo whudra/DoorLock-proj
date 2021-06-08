@@ -3,5 +3,4 @@
     pageEncoding="EUC-KR"%>
     <%
     	out.print("hello");
-    	UserDAO dao = new UserDAO();
     %>
